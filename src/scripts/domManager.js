@@ -7,6 +7,12 @@ const makeParkComponentVisited = (parkElement) => {
     <article class ="visited">
     <h3>Park Name: ${parkElement.name}</h3>
     <p>State: ${parkElement.state}</p>
+    <p>Weather: </p>
+      <ul>
+        <li>Currently: Summary from currently in API Data</li>
+        <li>Today: Summary from hourly in API Data</li>
+        <li>Week: Summary from daily in API Data</li>
+      </ul>
     </article>
     `
 }
@@ -21,10 +27,15 @@ const makeParkComponentNotVisited = (parkElement) => {
     `
 }
 
-//To loop through the JSON parkObjects and determine if they have been visited or not 
+
+//To loop through the JSON parkObjects and determine if they have been visited or not
 // and post them to the DOM accordingly
 const renderParkElements = parks => {
-    parks.forEach(parkElement => {   
+    parks.forEach(parkElement => {
+        let latitude = parkElement.latitude.value
+        console.log(latitude)
+        let longitude = parkElement.longitude.value     
+        console.log(longitude)
         if(parkElement.visited === true) {
         parkObject.innerHTML += makeParkComponentVisited(parkElement)
     } else {
@@ -32,3 +43,12 @@ const renderParkElements = parks => {
     }
 })
 }
+
+
+
+
+// const renderParkWeatherElements = parksWeather => {
+//     parksWeather.forEach(parkWeatherElement => {
+//         let 
+// })
+// }
