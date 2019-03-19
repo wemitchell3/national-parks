@@ -1,6 +1,5 @@
 //To target the only element class currently located on the DOM
 const parkObject = document.querySelector("#display-container");
-
 //To create custom dom elements with CSS if the park has been visited
 const makeParkComponentVisited = (parkElement, response) => {
   return `
@@ -36,17 +35,13 @@ const makeParkComponentNotVisited = (parkElement, response) => {
 const renderParkElements = parsedParks => {
     parsedParks.forEach(parkElement => {
           let latitude = parkElement.latitude
-          // console.log(latitude)
           let longitude = parkElement.longitude
-          // console.log(longitude)
           getNationalParksWeather(latitude, longitude).then(response => {
-            // console.log(parksWeather)
             if (parkElement.visited === true) {
               parkObject.innerHTML += makeParkComponentVisited(parkElement, response)
             } else {
               parkObject.innerHTML += makeParkComponentNotVisited(parkElement, response)
             }
           })
-          // console.log(test)
     })
   }
